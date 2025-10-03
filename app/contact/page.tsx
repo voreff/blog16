@@ -24,8 +24,8 @@ export default function ContactPage() {
   const [newsletterEmail, setNewsletterEmail] = useState("")
   const [newsletterCaptcha, setNewsletterCaptcha] = useState("")
   const [newsletterLoading, setNewsletterLoading] = useState(false)
-  const [captchaUrl, setCaptchaUrl] = useState(`/api/captcha?t=${Date.now()}`)
-  const [newsletterCaptchaUrl, setNewsletterCaptchaUrl] = useState(`/api/captcha?t=${Date.now()}`)
+  const [captchaUrl, setCaptchaUrl] = useState<string>("")
+  const [newsletterCaptchaUrl, setNewsletterCaptchaUrl] = useState<string>("")
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {

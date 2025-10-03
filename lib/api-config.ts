@@ -23,29 +23,6 @@ export const apiEndpoints = {
 }
 
 export const apiCall = async (url: string, options?: RequestInit) => {
-  // Handle captcha specially - use Next.js API route for static compatibility
-  if (url.includes('captcha') && process.env.NODE_ENV === 'production') {
-    // Use Next.js API route for static exports
-    const captchaUrl = '/api/captcha';
-    console.log("Using Next.js captcha route for static mode")
-
-    const response = await fetch(captchaUrl, {
-      ...options,
-      credentials: 'include',
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "image/svg+xml",
-        ...options?.headers,
-      },
-    })
-
-    if (response.ok) {
-      return { success: true, message: "Captcha generated successfully" }
-    } else {
-      throw new Error(`Captcha generation failed: ${response.status}`)
-    }
-  }
-
   try {
     console.log("API Call:", { url, method: options?.method || 'GET' })
 
